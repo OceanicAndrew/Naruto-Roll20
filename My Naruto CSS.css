@@ -1,0 +1,587 @@
+/* ---- Tab Button Styles ---- */
+.sheet-tab-label {
+  display: inline-block;
+  padding: 5px 10px;
+  background: #ddd;
+  border: 1px solid #aaa;
+  margin-right: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.sheet-tab-toggle {
+  display: none;
+}
+
+.sheet-tab-content {
+  display: none;
+}
+
+.sheet-tab-toggle[value="tab1"]:checked ~ .tab1,
+.sheet-tab-toggle[value="tab2"]:checked ~ .tab2,
+.sheet-tab-toggle[value="tab3"]:checked ~ .tab3 {
+  display: block;
+}
+
+/* Fallback: if nothing is checked, show tab1 */
+.sheet-tab-content.tab1:first-of-type {
+  display: block;
+}
+
+/* ---- Shared Sheet Styling ---- */
+.sheetmagic {
+  position: relative;
+  margin: auto;
+  font-family: sans-serif;
+}
+
+.sheetmagic * {
+  color: #000000 !important;
+}
+
+.sm-prop {
+  margin: 0 !important;
+  padding: 0 !important;
+  position: absolute;
+  background: transparent !important;
+  box-shadow: none;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: black;
+}
+
+.sm-prop:focus {
+  background: rgba(0, 0, 0, 0.1) !important;
+}
+
+.sm-mlt {
+  font-size: 16px;
+  resize: none;
+  padding: 2px;
+  line-height: 1.2;
+  vertical-align: top;
+}
+
+.sm-num {
+  text-align: center;
+}
+
+.sm-roll {
+  cursor: pointer;
+}
+
+.sm-noedit {
+  border: none;
+}
+
+/* ---- Hide default spinners on number fields ---- */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+/* ---- Prevent roll buttons from showing "d20" icon ---- */
+button[type='roll']::before {
+  content: '' !important;
+}
+
+/* ---- Dot-style Checkboxes ---- */
+.sm-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  border: none;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Default checkbox with invisible frame */
+.sm-checkbox::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: transparent;
+}
+
+/* Dot when checked */
+.sm-checkbox:checked::before {
+  background: black;
+}
+
+/* ===== Subclass: sm-checkbox-framed ===== */
+
+/* Always show outline */
+.sm-checkbox-framed::before {
+  border: 1px solid black;
+}
+
+/* Filled dot when checked (with border retained) */
+.sm-checkbox-framed:checked::before {
+  background: black;
+}
+
+/* Hide border on input when it has content */
+.sm-noborder:not(:placeholder-shown) {
+  border: none;
+}
+
+/* Optional: Add a hover/focus border if you want user feedback */
+.sm-noborder:focus {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Naruto Roll Template */
+.sheet-rolltemplate-naruto {
+  background-color: #1a1a1a;
+  border: 2px solid #ff9800;
+  color: #f9f9f9;
+  font-family: 'Segoe UI', sans-serif;
+  border-radius: 6px;
+  padding: 10px;
+  box-shadow: 0 0 8px rgba(255, 136, 0, 0.6);
+}
+
+.sheet-rolltemplate-naruto .sheet-naruto-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sheet-rolltemplate-naruto .sheet-naruto-header {
+  background: linear-gradient(90deg, #ff9800 0%, #ff5722 100%);
+  color: #fff;
+  text-shadow: 1px 1px #000;
+  padding: 6px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 4px;
+  border: 1px solid #fff;
+}
+
+.sheet-rolltemplate-naruto .sheet-naruto-body {
+  background-color: #2b2b2b;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #444;
+}
+
+.sheet-rolltemplate-naruto .sheet-naruto-desc {
+  font-style: italic;
+  margin-bottom: 6px;
+  color: #ffa726;
+}
+
+.sheet-rolltemplate-naruto .sheet-naruto-result {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: #ffcc80;
+}
+
+.sheet-rolltemplate-naruto .inlinerollresult,
+.sheet-rolltemplate-naruto .inlinerollresult.fullcrit,
+.sheet-rolltemplate-naruto .inlinerollresult.fullfail,
+.sheet-rolltemplate-naruto .inlinerollresult.importantroll {
+  background-color: transparent !important;
+  border: none !important;
+  color: #ffcc80 !important;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 0;
+  box-shadow: none;
+}
+
+details.jutsu-box {
+  border-radius: 5px;
+  width: 100%;
+  font-size: 12px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Only show background and border when opened */
+details.jutsu-box[open] {
+  background: #ffffff;
+  border: 1px solid #888;
+  padding: 5px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+}
+
+details.jutsu-box summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 2px;
+  font-weight: bold;
+  background: #ddd;
+  border-radius: 4px;
+  margin-bottom: 4px;
+}
+
+details.jutsu-box summary::-webkit-details-marker {
+  display: none;
+}
+
+.jutsu-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.jutsu-fields label {
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+  font-size: 11px;
+}
+
+.jutsu-fields input {
+  flex: 1;
+  font-size: 11px;
+  border: 1px solid #aaa;
+  padding: 1px 3px;
+}
+
+.jutsu-desc-label textarea {
+  width: 100%;
+  height: 80px;
+  font-size: 11px;
+  resize: vertical;
+  border: 1px solid #aaa;
+  padding: 2px;
+}
+
+.jutsu-fields input:not(:placeholder-shown),
+.jutsu-desc-label textarea:not(:placeholder-shown) {
+  border: none;
+}
+
+.jutsu-title {
+  width: 80%;
+  font-size: 9px;
+  padding: 1px 3px;
+  height: 14px;
+  border: 1px solid #aaa;
+}
+
+/* Shrink the header spacing too */
+details.jutsu-box summary {
+  padding: 1px;
+  margin-bottom: 1px;
+  min-height: 16px;
+}
+
+/* Default compact style for unopened Jutsu box */
+details.jutsu-box {
+  background: transparent;
+  border: none;
+  padding: 2px;
+  width: 200px;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+/* Expand the container visually and functionally when open */
+details.jutsu-box[open] {
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid #888;
+  border-radius: 5px;
+  padding: 8px;
+  width: 460px; /* You can increase this to your liking */
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  position: relative;
+}
+
+/* All fields except Description: tighter layout */
+.jutsu-fields label {
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+  font-size: 11px;
+  align-items: center;
+  margin-bottom: 2px; /* less space between rows */
+}
+
+.jutsu-fields input {
+  flex: 1;
+  font-size: 11px;
+  padding: 2px 4px;
+  height: 18px;        /* reduce height */
+  border: 1px solid #aaa;
+}
+
+/* Description field stacked layout */
+.jutsu-desc-label {
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 4px;
+}
+
+.jutsu-desc-label span {
+  margin-bottom: 2px;
+}
+
+.jutsu-desc-label textarea {
+  width: 100%;
+  height: 100px;
+  font-size: 12px;
+  padding: 4px;
+  resize: vertical;
+  border: 1px solid #aaa;
+}
+
+.feattrait-box {
+  width: 100%;
+  background: #fff;
+  border: 1px solid #888;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 12px;
+  transition: all 0.3s ease-in-out;
+  background-color: rgba(255, 255, 255, 1); /* Fully opaque */
+}
+
+/* When opened, make it taller and thinner */
+.feattrait-box[open] {
+  width: 280px;   /* thinner */
+  height: 500px;  /* taller */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.feattrait-box .jutsu-desc-label textarea {
+  width: 100%;
+  height: 80px;
+  font-size: 11px;
+  resize: vertical;
+  border: 1px solid #aaa;
+  padding: 2px;
+}
+
+/* When the feattrait box is open, expand the textarea */
+.feattrait-box[open] .jutsu-desc-label textarea {
+  height: 335px; /* Adjust as needed to fill the box */
+  z-index: 1000;
+}
+
+/* Default: Hide all repcontrol buttons */
+.repcontrol[data-groupname="repeating_feattraitprof"],
+.repcontrol[data-groupname="repeating_erankjutsu"],
+.repcontrol[data-groupname="repeating_drankjutsu"],
+.repcontrol[data-groupname="repeating_crankjutsu"],
+.repcontrol[data-groupname="repeating_brankjutsu"],
+.repcontrol[data-groupname="repeating_arankjutsu"],
+.repcontrol[data-groupname="repeating_srankjutsu"] {
+  display: none;
+}
+
+/* Show if checkbox for corresponding rank is checked */
+.feattraitprof-toggle:checked ~ .repcontrol[data-groupname="repeating_feattraitprof"],
+.erank-toggle:checked ~ .repcontrol[data-groupname="repeating_erankjutsu"],
+.drank-toggle:checked ~ .repcontrol[data-groupname="repeating_drankjutsu"],
+.crank-toggle:checked ~ .repcontrol[data-groupname="repeating_crankjutsu"],
+.brank-toggle:checked ~ .repcontrol[data-groupname="repeating_brankjutsu"],
+.arank-toggle:checked ~ .repcontrol[data-groupname="repeating_arankjutsu"],
+.srank-toggle:checked ~ .repcontrol[data-groupname="repeating_srankjutsu"] {
+  display: block;
+}
+
+/* Hide repcontrols by default */
+.erank-wrapper .repcontrol[data-groupname="repeating_erankjutsu1"],
+.erank-wrapper .repcontrol[data-groupname="repeating_erankjutsu2"] {
+  display: none;
+}
+
+/* Show the correct one based on toggle + page */
+.erank-toggle:checked ~ .erank-page-toggle[value="1"]:checked ~ .erank-page-1 .repcontrol[data-groupname="repeating_erankjutsu1"],
+.erank-toggle:checked ~ .erank-page-toggle[value="2"]:checked ~ .erank-page-2 .repcontrol[data-groupname="repeating_erankjutsu2"] {
+  display: block;
+}
+
+/* Hide repcontrols by default */
+.drank-wrapper .repcontrol[data-groupname="repeating_drankjutsu1"],
+.drank-wrapper .repcontrol[data-groupname="repeating_drankjutsu2"] {
+  display: none;
+}
+
+/* Show the correct one based on toggle + page */
+.drank-toggle:checked ~ .drank-page-toggle[value="1"]:checked ~ .drank-page-1 .repcontrol[data-groupname="repeating_drankjutsu1"],
+.drank-toggle:checked ~ .drank-page-toggle[value="2"]:checked ~ .drank-page-2 .repcontrol[data-groupname="repeating_drankjutsu2"] {
+  display: block;
+}
+
+/* Hide repcontrols by default */
+.crank-wrapper .repcontrol[data-groupname="repeating_crankjutsu1"],
+.crank-wrapper .repcontrol[data-groupname="repeating_crankjutsu2"] {
+  display: none;
+}
+
+/* Show the correct one based on toggle + page */
+.crank-toggle:checked ~ .crank-page-toggle[value="1"]:checked ~ .crank-page-1 .repcontrol[data-groupname="repeating_crankjutsu1"],
+.crank-toggle:checked ~ .crank-page-toggle[value="2"]:checked ~ .crank-page-2 .repcontrol[data-groupname="repeating_crankjutsu2"] {
+  display: block;
+}
+
+/* Hide repcontrols by default */
+.brank-wrapper .repcontrol[data-groupname="repeating_brankjutsu1"],
+.brank-wrapper .repcontrol[data-groupname="repeating_brankjutsu2"] {
+  display: none;
+}
+
+/* Show the correct one based on toggle + page */
+.brank-toggle:checked ~ .brank-page-toggle[value="1"]:checked ~ .brank-page-1 .repcontrol[data-groupname="repeating_brankjutsu1"],
+.brank-toggle:checked ~ .brank-page-toggle[value="2"]:checked ~ .brank-page-2 .repcontrol[data-groupname="repeating_brankjutsu2"] {
+  display: block;
+}
+
+/* Hide repcontrols by default */
+.arank-wrapper .repcontrol[data-groupname="repeating_arankjutsu1"],
+.arank-wrapper .repcontrol[data-groupname="repeating_arankjutsu2"] {
+  display: none;
+}
+
+/* Show the correct one based on toggle + page */
+.arank-toggle:checked ~ .arank-page-toggle[value="1"]:checked ~ .arank-page-1 .repcontrol[data-groupname="repeating_arankjutsu1"],
+.arank-toggle:checked ~ .arank-page-toggle[value="2"]:checked ~ .arank-page-2 .repcontrol[data-groupname="repeating_arankjutsu2"] {
+  display: block;
+}
+
+/* Hide repcontrols by default */
+.srank-wrapper .repcontrol[data-groupname="repeating_srankjutsu1"],
+.srank-wrapper .repcontrol[data-groupname="repeating_srankjutsu2"] {
+  display: none;
+}
+
+/* Show the correct one based on toggle + page */
+.srank-toggle:checked ~ .srank-page-toggle[value="1"]:checked ~ .srank-page-1 .repcontrol[data-groupname="repeating_srankjutsu1"],
+.srank-toggle:checked ~ .srank-page-toggle[value="2"]:checked ~ .srank-page-2 .repcontrol[data-groupname="repeating_srankjutsu2"] {
+  display: block;
+}
+
+/* Style for page labels */
+.erank-page-label {
+  cursor: pointer;
+}
+
+/* Hide all pages by default */
+.erank-page {
+  display: none;
+}
+
+/* Show selected page */
+.erank-page-toggle[value="1"]:checked ~ .erank-page-1,
+.erank-page-toggle[value="2"]:checked ~ .erank-page-2 {
+  display: block;
+}
+
+/* Style for page labels */
+.drank-page-label {
+  cursor: pointer;
+}
+
+/* Hide all pages by default */
+.drank-page {
+  display: none;
+}
+
+/* Show selected page */
+.drank-page-toggle[value="1"]:checked ~ .drank-page-1,
+.drank-page-toggle[value="2"]:checked ~ .drank-page-2 {
+  display: block;
+}
+
+/* Style for page labels */
+.crank-page-label {
+  cursor: pointer;
+}
+
+/* Hide all pages by default */
+.crank-page {
+  display: none;
+}
+
+/* Show selected page */
+.crank-page-toggle[value="1"]:checked ~ .crank-page-1,
+.crank-page-toggle[value="2"]:checked ~ .crank-page-2 {
+  display: block;
+}
+
+/* Style for page labels */
+.brank-page-label {
+  cursor: pointer;
+}
+
+/* Hide all pages by default */
+.brank-page {
+  display: none;
+}
+
+/* Show selected page */
+.brank-page-toggle[value="1"]:checked ~ .brank-page-1,
+.brank-page-toggle[value="2"]:checked ~ .brank-page-2 {
+  display: block;
+}
+
+/* Style for page labels */
+.arank-page-label {
+  cursor: pointer;
+}
+
+/* Hide all pages by default */
+.arank-page {
+  display: none;
+}
+
+/* Show selected page */
+.arank-page-toggle[value="1"]:checked ~ .arank-page-1,
+.arank-page-toggle[value="2"]:checked ~ .arank-page-2 {
+  display: block;
+}
+
+/* Style for page labels */
+.srank-page-label {
+  cursor: pointer;
+}
+
+/* Hide all pages by default */
+.srank-page {
+  display: none;
+}
+
+/* Show selected page */
+.srank-page-toggle[value="1"]:checked ~ .srank-page-1,
+.srank-page-toggle[value="2"]:checked ~ .srank-page-2 {
+  display: block;
+}
+
+/* Hide both repcontrols by default */
+.feattraitprof-wrapper .repcontrol[data-groupname="repeating_feattraitprof1"],
+.feattraitprof-wrapper .repcontrol[data-groupname="repeating_feattraitprof2"] {
+  display: none;
+}
+
+/* Show repcontrol only if checkbox is checked AND page is selected */
+.feattraitprof-toggle:checked ~ .feattraitprof-page-toggle[value="1"]:checked ~ .feattraitprof-page-1 .repcontrol[data-groupname="repeating_feattraitprof1"],
+.feattraitprof-toggle:checked ~ .feattraitprof-page-toggle[value="2"]:checked ~ .feattraitprof-page-2 .repcontrol[data-groupname="repeating_feattraitprof2"] {
+  display: block;
+}
+
+/* Hide inactive page */
+.feattraitprof-page {
+  display: none;
+}
+
+.feattraitprof-page-toggle[value="1"]:checked ~ .feattraitprof-page-1,
+.feattraitprof-page-toggle[value="2"]:checked ~ .feattraitprof-page-2 {
+  display: block;
+}

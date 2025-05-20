@@ -1,0 +1,659 @@
+
+<!-- Main Sheet -->
+<div class="sheetmagic" style="width: 792px; height: 1024px; background-image: url('https://i.imgur.com/LJ2DA7z.png');">
+
+  <!--  Header Info -->
+  <input name="attr_name" type="text" class="sm-prop sm-slt sm-noborder" placeholder=" " style="left: 265px; top: 56px; width: 170px; height: 29px; font-size: 17px;">
+  <input name="attr_clan" type="text" class="sm-prop sm-slt sm-noborder" placeholder=" " style="left: 482px; top: 56px; width: 121px; height: 29px; font-size: 17px;">
+  <input name="attr_playername" type="text" class="sm-prop sm-slt sm-noborder" placeholder=" " style="left: 621px; top: 56px; width: 110px; height: 29px; font-size: 17px; text-align: center;">
+  <input name="attr_classlevel" type="text" class="sm-prop sm-slt sm-noborder" placeholder=" " style="left: 267px; top: 106px; width: 170px; height: 29px; font-size: 17px;">
+  <input name="attr_exppoints" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 511px; top: 106px; width: 215px; height: 29px; font-size: 17px;">
+  
+  <select name="attr_roll_type">
+  <option value="1d20">Normal</option>
+  <option value="2d20kh1">Advantage</option>
+  <option value="2d20kl1">Disadvantage</option>
+</select>
+
+  <select name="attr_whispertoggle">
+  <option value="">Public</option>
+  <option value="/w gm ">GM Roll</option>
+</select>
+
+<rolltemplate class="sheet-rolltemplate-naruto">
+  <div class="sheet-naruto-container">
+    <div class="sheet-naruto-header">
+      {{name}}
+    </div>
+    <div class="sheet-naruto-body">
+      {{#description}}
+        <div class="sheet-naruto-desc">{{description}}</div>
+      {{/description}}
+      {{#roll}}
+        <div class="sheet-naruto-result">{{roll}}</div>
+      {{/roll}}
+    </div>
+  </div>
+</rolltemplate>
+
+  <!--  Core Stats -->
+  <input name="attr_strength" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 61px; top: 251px; width: 17px; height: 19px; font-size: 12px;">
+  <input name="attr_dexterity" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 61px; top: 344px; width: 17px; height: 19px; font-size: 12px;">
+  <input name="attr_constitution" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 61px; top: 436px; width: 17px; height: 19px; font-size: 12px;">
+  <input name="attr_intelligence" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 61px; top: 529px; width: 17px; height: 19px; font-size: 12px;">
+  <input name="attr_wisdom" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 61px; top: 621px; width: 17px; height: 19px; font-size: 12px;">
+  <input name="attr_charisma" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 61px; top: 714px; width: 17px; height: 19px; font-size: 12px;">
+
+  <!-- 易 Modifiers (auto-calculated) -->
+  <input name="attr_strmod" value="(floor((@{strength}-10)/2))" disabled type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 52px; top: 210px; width: 35px; height: 35px; font-size: 22px;">
+  <input name="attr_dexmod" value="(floor((@{dexterity}-10)/2))" disabled type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 52px; top: 303px; width: 35px; height: 35px; font-size: 22px;">
+  <input name="attr_conmod" value="(floor((@{constitution}-10)/2))" disabled type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 52px; top: 395px; width: 35px; height: 35px; font-size: 22px;">
+  <input name="attr_intmod" value="(floor((@{intelligence}-10)/2))" disabled type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 52px; top: 488px; width: 35px; height: 35px; font-size: 22px;">
+  <input name="attr_wismod" value="(floor((@{wisdom}-10)/2))" disabled type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 52px; top: 581px; width: 35px; height: 35px; font-size: 22px;">
+  <input name="attr_chamod" value="(floor((@{charisma}-10)/2))" disabled type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 52px; top: 673px; width: 35px; height: 35px; font-size: 22px;">
+
+  <!-- ❤️ Combat Stats -->
+  <input name="attr_armorclass" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 305px; top: 184px; width: 30px; height: 30px; font-size: 17px;">
+  <input name="attr_initiative" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 373px; top: 184px; width: 39px; height: 39px; font-size: 17px;">
+  <button type="roll" name="roll_initiative" value="@{whispertoggle}&{template:naruto} {{name=Initiative}} {{roll=[[ @{roll_type} + @{initiative} ]]}}" class="sm-prop sm-roll" style="left: 373px; top: 227px; width: 40px; height: 7px; background: transparent; border: none; cursor: pointer;"> </button>
+  <input name="attr_speed" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 449px; top: 184px; width: 39px; height: 39px; font-size: 17px;">
+  <input name="attr_hitpointmax" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 300px; top: 266px; width: 90px; height: 45px; font-size: 25px;">
+  <input name="attr_currenthitpoints" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 300px; top: 347px; width: 90px; height: 45px; font-size: 25px;">
+  <textarea name="attr_totalhitdie" type="text" class="sm-prop sm-slt sm-noborder" placeholder=" " style="left: 319px; top: 411px; width: 62px; height: 14px; font-size: 17px;"></textarea>
+  <textarea name="attr_hitdie" type="text" class="sm-prop sm-slt sm-noborder" placeholder=" " style="left: 298px; top: 427px; width: 84px; height: 30px; font-size: 20px; text-align: center;"></textarea>
+  <textarea name="attr_chakradiemax" type="text" class="sm-prop sm-slt sm-noborder" placeholder=" " style="left: 426px; top: 411px; width: 69px; height: 13px; font-size: 17px;"></textarea>
+  <textarea name="attr_chakradie" type="text" class="sm-prop sm-slt sm-noborder" placeholder=" " style="left: 410px; top: 427px; width: 85px; height: 27px; font-size: 20px; text-align: center;"></textarea>
+  
+  <!--  Chakra -->
+  <input name="attr_chakrapointmaximum" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 400px; top: 266px; width: 90px; height: 45px; font-size: 25px;">
+  <input name="attr_currentchakra" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 402px; top: 347px; width: 90px; height: 45px; font-size: 25px;">
+  
+  <!--  Jitsu -->
+  <input name="attr_atkjtsu1" type="text" class="sm-prop sm-slt sm-noborder" placeholder=" " style="left: 288px; top: 507px; width: 85px; height: 20px; font-size: 11px;">
+  <input name="attr_atkjtsu2" type="text" class="sm-prop sm-slt sm-noborder" placeholder=" " style="left: 288px; top: 534px; width: 85px; height: 20px; font-size: 11px;">
+  <input name="attr_atkjtsu3" type="text" class="sm-prop sm-slt sm-noborder" placeholder=" " style="left: 288px; top: 560px; width: 85px; height: 20px; font-size: 11px;">
+  <input name="attr_atkjtsu4" type="text" class="sm-prop sm-slt sm-noborder" placeholder=" " style="left: 288px; top: 586px; width: 85px; height: 20px; font-size: 11px;">
+  <input name="attr_atkjtsu5" type="text" class="sm-prop sm-slt sm-noborder" placeholder=" " style="left: 288px; top: 611px; width: 85px; height: 20px; font-size: 11px;">
+  <input name="attr_atkjtsu6" type="text" class="sm-prop sm-slt sm-noborder" placeholder=" " style="left: 288px; top: 638px; width: 85px; height: 20px; font-size: 11px;">
+  <input name="attr_atkjtsu1bonus" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 379px; top: 507px; width: 40px; height: 20px; font-size: 17px;">
+  <input name="attr_atkjtsu2bonus" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 379px; top: 534px; width: 40px; height: 20px; font-size: 17px;">
+  <input name="attr_atkjtsu3bonus" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 379px; top: 560px; width: 40px; height: 20px; font-size: 17px;">
+  <input name="attr_atkjtsu4bonus" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 379px; top: 586px; width: 40px; height: 20px; font-size: 17px;">
+  <input name="attr_atkjtsu5bonus" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 379px; top: 611px; width: 40px; height: 20px; font-size: 17px;">
+  <input name="attr_atkjtsu6bonus" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 379px; top: 638px; width: 40px; height: 20px; font-size: 17px;">
+  <input name="attr_atkjtsu1type" type="text" class="sm-prop sm-slt sm-noborder" placeholder=" " style="left: 426px; top: 507px; width: 77px; height: 20px; font-size: 11px;">
+  <input name="attr_atkjtsu2type" type="text" class="sm-prop sm-slt sm-noborder" placeholder=" " style="left: 426px; top: 534px; width: 77px; height: 20px; font-size: 11px;">
+  <input name="attr_atkjtsu3type" type="text" class="sm-prop sm-slt sm-noborder" placeholder=" " style="left: 426px; top: 560px; width: 77px; height: 20px; font-size: 11px;">
+  <input name="attr_atkjtsu4type" type="text" class="sm-prop sm-slt sm-noborder" placeholder=" " style="left: 426px; top: 586px; width: 77px; height: 20px; font-size: 11px;">
+  <input name="attr_atkjtsu5type" type="text" class="sm-prop sm-slt sm-noborder" placeholder=" " style="left: 426px; top: 611px; width: 77px; height: 20px; font-size: 11px;">
+  <input name="attr_atkjtsu6type" type="text" class="sm-prop sm-slt sm-noborder" placeholder=" " style="left: 426px; top: 638px; width: 77px; height: 20px; font-size: 11px;">
+  
+  <!--  Personality -->
+  <textarea name="attr_traits" class="sm-prop sm-mlt sm-noborder" placeholder=" " style="left: 541px; top: 184px; width: 198px; height: 59px; font-size: 12px;"></textarea>
+  <textarea name="attr_ideals" class="sm-prop sm-mlt sm-noborder" placeholder=" " style="left: 541px; top: 273px; width: 198px; height: 42px; font-size: 12px;"></textarea>
+  <textarea name="attr_bonds" class="sm-prop sm-mlt sm-noborder" placeholder=" " style="left: 541px; top: 345px; width: 198px; height: 42px; font-size: 12px;"></textarea>
+  <textarea name="attr_flaws" class="sm-prop sm-mlt sm-noborder" placeholder=" " style="left: 541px; top: 416px; width: 198px; height: 42px; font-size: 12px;"></textarea>
+  <textarea name="attr_feattraitprof" class="sm-prop sm-mlt sm-noborder" placeholder=" " style="left: 532px; top: 500px; width: 213px; height: 478px; font-size: 10px;"></textarea>
+  
+<div class="feattraitprof-wrapper" style="position: absolute; left: 532px; top: 500px; width: 200px;">
+  <!-- Toggle to show/hide Add/Modify buttons -->
+  <input type="checkbox" name="attr_show_feattraitprof_controls" class="feattraitprof-toggle" style="position: absolute; left: -20px; top: 4px;" />
+
+  <!-- Page toggles -->
+  <input type="radio" name="attr_feattraitprof_page" class="feattraitprof-page-toggle" value="1" checked>
+  <input type="radio" name="attr_feattraitprof_page" class="feattraitprof-page-toggle" value="2">
+
+  <!-- Page 1 -->
+  <div class="feattraitprof-page feattraitprof-page-1">
+    <fieldset class="repeating_feattraitprof1">
+      <details class="feattrait-box">
+        <summary>
+          <input type="text" name="attr_feattraitprof_title" placeholder="Feat/Trait/Prof" class="jutsu-title" />
+        </summary>
+        <div class="jutsu-fields">
+          <label><span>Feat/Trait/Prof:</span><input type="text" name="attr_feattraitprof_feattraitprof" placeholder=" " /></label>
+          <label><span>Category:</span><input type="text" name="attr_feattraitprof_category" placeholder=" " /></label>
+          <label><span>Prerequisite:</span><input type="text" name="attr_feattraitprof_prerequisite" placeholder=" " /></label>
+          <label><span>Source:</span><input type="text" name="attr_feattraitprof_source" placeholder=" " /></label>
+          <label class="jutsu-desc-label"><span>Description:</span><textarea name="attr_jutsu_description" placeholder=" "></textarea></label>
+        </div>
+      </details>
+    </fieldset>
+  </div>
+
+  <!-- Page 2 -->
+  <div class="feattraitprof-page feattraitprof-page-2">
+    <fieldset class="repeating_feattraitprof2">
+      <details class="feattrait-box">
+        <summary>
+          <input type="text" name="attr_feattraitprof_title" placeholder="Feat/Trait/Prof" class="jutsu-title" />
+        </summary>
+        <div class="jutsu-fields">
+          <label><span>Feat/Trait/Prof:</span><input type="text" name="attr_feattraitprof_feattraitprof" placeholder=" " /></label>
+          <label><span>Category:</span><input type="text" name="attr_feattraitprof_category" placeholder=" " /></label>
+          <label><span>Prerequisite:</span><input type="text" name="attr_feattraitprof_prerequisite" placeholder=" " /></label>
+          <label><span>Source:</span><input type="text" name="attr_feattraitprof_source" placeholder=" " /></label>
+          <label class="jutsu-desc-label"><span>Description:</span><textarea name="attr_jutsu_description" placeholder=" "></textarea></label>
+        </div>
+      </details>
+    </fieldset>
+  </div>
+</div>
+
+  <!-- 藺 Equipment -->
+  <textarea name="attr_equipment" class="sm-prop sm-mlt sm-noborder" placeholder=" " style="left: 50px; top: 768px; width: 445px; height: 210px;"></textarea>
+  <input name="attr_proficiencybonus" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 22px; top: 54px; width: 25px; height: 24px; font-size: 17px;">
+  <input name="attr_passiveperception" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 29px; top: 92px; width: 20px; height: 25px; font-size: 17px;">
+  <input name="attr_passiveinsight" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 217px; top: 92px; width: 20px; height: 25px; font-size: 17px;">
+  <input name="attr_willoffire" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 22px; top: 131px; width: 25px; height: 25px; font-size: 17px;">
+  
+  <!-- 藺 Saving Throws and Proficiencies -->
+  <input name="attr_savthrowstr" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 140px; top: 200px; width: 20px; height: 9px; font-size: 10px;">
+  <button type="roll" name="roll_savthrowstr" value="@{whispertoggle}&{template:naruto} {{name=Strength Save}} {{roll=[[ @{roll_type} + @{savthrowstr} ]]}}" class="sm-prop sm-roll" style="left: 166px; top: 205px; width: 65px; height: 7px; background: transparent; border: none; cursor: pointer;"> </button>
+  <input name="attr_athletics" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 140px; top: 217px; width: 20px; height: 9px; font-size: 10px;">
+  <button type="roll" name="roll_athletics" value="@{whispertoggle}&{template:naruto} {{name=Athletics}} {{roll=[[ @{roll_type} + @{athletics} ]]}}" class="sm-prop sm-roll" style="left: 166px; top: 220px; width: 34px; height: 8px; background: transparent; border: none; cursor: pointer;"> </button>
+  <input name="attr_taijutsu" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 140px; top: 234px; width: 20px; height: 9px; font-size: 10px;">
+  <button type="roll" name="roll_taijutsu" value="@{whispertoggle}&{template:naruto} {{name=Taijutsu}} {{roll=[[ @{roll_type} + @{taijutsu} ]]}}" class="sm-prop sm-roll" style="left: 166px; top: 238px; width: 33px; height: 10px; background: transparent; border: none; cursor: pointer;"> </button>
+  <input name="attr_savingthrowdex" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 140px; top: 293px; width: 20px; height: 9px; font-size: 10px;">
+  <button type="roll" name="roll_savingthrowdex" value="@{whispertoggle}&{template:naruto} {{name=Dexterity Save}} {{roll=[[ @{roll_type} + @{savingthrowdex} ]]}}" class="sm-prop sm-roll" style="left: 166px; top: 297px; width: 65px; height: 8px; background: transparent; border: none; cursor: pointer;"> </button>
+  <input name="attr_acrobatics" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 140px; top: 310px; width: 20px; height: 9px; font-size: 10px;">
+  <button type="roll" name="roll_acrobatics" value="@{whispertoggle}&{template:naruto} {{name=Acrobatics}} {{roll=[[ @{roll_type} + @{acrobatics} ]]}}" class="sm-prop sm-roll" style="left: 166px; top: 313px; width: 40px; height: 8px; background: transparent; border: none; cursor: pointer;"> </button>
+  <input name="attr_sleightofhand" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 140px; top: 327px; width: 20px; height: 9px; font-size: 10px;">
+  <button type="roll" name="roll_sleightofhand" value="@{whispertoggle}&{template:naruto} {{name=Sleight of Hand}} {{roll=[[ @{roll_type} + @{sleightofhand} ]]}}" class="sm-prop sm-roll" style="left: 166px; top: 330px; width: 60px; height: 10px; background: transparent; border: none; cursor: pointer;"> </button>
+  <input name="attr_stealth" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 140px; top: 344px; width: 20px; height: 9px; font-size: 10px;">
+  <button type="roll" name="roll_stealth" value="@{whispertoggle}&{template:naruto} {{name=Stealth}} {{roll=[[ @{roll_type} + @{stealth} ]]}}" class="sm-prop sm-roll" style="left: 166px; top: 348px; width: 26px; height: 8px; background: transparent; border: none; cursor: pointer;"> </button>
+  <input name="attr_savthrowcon" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 140px; top: 388px; width: 20px; height: 9px; font-size: 10px;">
+  <button type="roll" name="roll_savthrowcon" value="@{whispertoggle}&{template:naruto} {{name=Constitution Save}} {{roll=[[ @{roll_type} + @{savthrowcon} ]]}}" class="sm-prop sm-roll" style="left: 166px; top: 392px; width: 65px; height: 8px; background: transparent; border: none; cursor: pointer;"> </button>
+  <input name="attr_chakracontrol" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 140px; top: 405px; width: 20px; height: 9px; font-size: 10px;">
+  <button type="roll" name="roll_chakracontrol" value="@{whispertoggle}&{template:naruto} {{name=Chakra Control}} {{roll=[[ @{roll_type} + @{chakracontrol} ]]}}" class="sm-prop sm-roll" style="left: 166px; top: 409px; width: 62px; height: 8px; background: transparent; border: none; cursor: pointer;"> </button>
+  <input name="attr_savthrowint" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 140px; top: 477px; width: 20px; height: 9px; font-size: 10px;">
+  <button type="roll" name="roll_savthrowint" value="@{whispertoggle}&{template:naruto} {{name=Intelligence Save}} {{roll=[[ @{roll_type} + @{savthrowint} ]]}}" class="sm-prop sm-roll" style="left: 166px; top: 480px; width: 65px; height: 8px; background: transparent; border: none; cursor: pointer;"> </button>
+  <input name="attr_crafting" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 140px; top: 488px; width: 20px; height: 9px; font-size: 10px;">
+  <button type="roll" name="roll_crafting" value="@{whispertoggle}&{template:naruto} {{name=Crafting}} {{roll=[[ @{roll_type} + @{crafting} ]]}}" class="sm-prop sm-roll" style="left: 166px; top: 491px; width: 32px; height: 10px; background: transparent; border: none; cursor: pointer;"> </button>
+  <input name="attr_history" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 140px; top: 500px; width: 20px; height: 9px; font-size: 10px;">
+  <button type="roll" name="roll_history" value="@{whispertoggle}&{template:naruto} {{name=History}} {{roll=[[ @{roll_type} + @{history} ]]}}" class="sm-prop sm-roll" style="left: 166px; top: 504px; width: 29px; height: 10px; background: transparent; border: none; cursor: pointer;"> </button>
+  <input name="attr_investigation" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 140px; top: 512px; width: 20px; height: 9px; font-size: 10px;">
+  <button type="roll" name="roll_investigation" value="@{whispertoggle}&{template:naruto} {{name=Investigation}} {{roll=[[ @{roll_type} + @{investigation} ]]}}" class="sm-prop sm-roll" style="left: 166px; top: 516px; width: 50px; height: 10px; background: transparent; border: none; cursor: pointer;"> </button>
+  <input name="attr_nature" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 140px; top: 524px; width: 20px; height: 9px; font-size: 10px;">
+  <button type="roll" name="roll_nature" value="@{whispertoggle}&{template:naruto} {{name=Nature}} {{roll=[[ @{roll_type} + @{nature} ]]}}" class="sm-prop sm-roll" style="left: 166px; top: 529px; width: 27px; height: 7px; background: transparent; border: none; cursor: pointer;"> </button>
+  <input name="attr_ninjutsu" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 140px; top: 536px; width: 20px; height: 9px; font-size: 10px;">
+  <button type="roll" name="roll_ninjutsu" value="@{whispertoggle}&{template:naruto} {{name=Ninshou}} {{roll=[[ @{roll_type} + @{ninjutsu} ]]}}" class="sm-prop sm-roll" style="left: 166px; top: 539px; width: 33px; height: 8px; background: transparent; border: none; cursor: pointer;"> </button>
+  <input name="attr_savthrowwis" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 140px; top: 567px; width: 20px; height: 9px; font-size: 10px;">
+  <button type="roll" name="roll_savthrowwis" value="@{whispertoggle}&{template:naruto} {{name=Wisdom Save}} {{roll=[[ @{roll_type} + @{savthrowwis} ]]}}" class="sm-prop sm-roll" style="left: 166px; top: 571px; width: 65px; height: 8px; background: transparent; border: none; cursor: pointer;"> </button>
+  <input name="attr_animalhandling" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 140px; top: 579px; width: 20px; height: 9px; font-size: 10px;">
+  <button type="roll" name="roll_animalhandling" value="@{whispertoggle}&{template:naruto} {{name=Animal Handling}} {{roll=[[ @{roll_type} + @{animalhandling} ]]}}" class="sm-prop sm-roll" style="left: 166px; top: 583px; width: 65px; height: 9px; background: transparent; border: none; cursor: pointer;"> </button>
+  <input name="attr_insight" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 140px; top: 591px; width: 20px; height: 9px; font-size: 10px;">
+  <button type="roll" name="roll_insight" value="@{whispertoggle}&{template:naruto} {{name=Insight}} {{roll=[[ @{roll_type} + @{insight} ]]}}" class="sm-prop sm-roll" style="left: 166px; top: 596px; width: 27px; height: 8px; background: transparent; border: none; cursor: pointer;"> </button>
+  <input name="attr_medicine" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 140px; top: 603px; width: 20px; height: 9px; font-size: 10px;">
+  <button type="roll" name="roll_medicine" value="@{whispertoggle}&{template:naruto} {{name=Medicine}} {{roll=[[ @{roll_type} + @{medicine} ]]}}" class="sm-prop sm-roll" style="left: 166px; top: 607px; width: 35px; height: 7px; background: transparent; border: none; cursor: pointer;"> </button>
+  <input name="attr_perception" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 140px; top: 615px; width: 20px; height: 9px; font-size: 10px;">
+  <button type="roll" name="roll_perception" value="@{whispertoggle}&{template:naruto} {{name=Perception}} {{roll=[[ @{roll_type} + @{perception} ]]}}" class="sm-prop sm-roll" style="left: 166px; top: 618px; width: 41px; height: 9px; background: transparent; border: none; cursor: pointer;"> </button>
+  <input name="attr_survival" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 140px; top: 627px; width: 20px; height: 9px; font-size: 10px;">
+  <button type="roll" name="roll_survival" value="@{whispertoggle}&{template:naruto} {{name=Survival}} {{roll=[[ @{roll_type} + @{survival} ]]}}" class="sm-prop sm-roll" style="left: 166px; top: 630px; width: 30px; height: 8px; background: transparent; border: none; cursor: pointer;"> </button>
+  <input name="attr_genjutsu" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 140px; top: 639px; width: 20px; height: 9px; font-size: 10px;">
+  <button type="roll" name="roll_genjutsu" value="@{whispertoggle}&{template:naruto} {{name=Illusions}} {{roll=[[ @{roll_type} + @{genjutsu} ]]}}" class="sm-prop sm-roll" style="left: 166px; top: 642px; width: 35px; height: 7px; background: transparent; border: none; cursor: pointer;"> </button>
+  <input name="attr_savthrowcha" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 140px; top: 661px; width: 20px; height: 9px; font-size: 10px;">
+  <button type="roll" name="roll_savthrowcha" value="@{whispertoggle}&{template:naruto} {{name=Charisma Save}} {{roll=[[ @{roll_type} + @{savthrowcha} ]]}}" class="sm-prop sm-roll" style="left: 166px; top: 665px; width: 65px; height: 7px; background: transparent; border: none; cursor: pointer;"> </button>
+  <input name="attr_deception" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 140px; top: 676px; width: 20px; height: 9px; font-size: 10px;">
+  <button type="roll" name="roll_deception" value="@{whispertoggle}&{template:naruto} {{name=Deception}} {{roll=[[ @{roll_type} + @{deception} ]]}}" class="sm-prop sm-roll" style="left: 166px; top: 679px; width: 39px; height: 9px; background: transparent; border: none; cursor: pointer;"> </button>
+  <input name="attr_intimidation" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 140px; top: 691px; width: 20px; height: 9px; font-size: 10px;">
+  <button type="roll" name="roll_intimidation" value="@{whispertoggle}&{template:naruto} {{name=Intimidation}} {{roll=[[ @{roll_type} + @{intimidation} ]]}}" class="sm-prop sm-roll" style="left: 166px; top: 695px; width: 47px; height: 7px; background: transparent; border: none; cursor: pointer;"> </button>
+  <input name="attr_performance" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 140px; top: 706px; width: 20px; height: 9px; font-size: 10px;">
+  <button type="roll" name="roll_performance" value="@{whispertoggle}&{template:naruto} {{name=Performance}} {{roll=[[ @{roll_type} + @{performance} ]]}}" class="sm-prop sm-roll" style="left: 166px; top: 710px; width: 49px; height: 8px; background: transparent; border: none; cursor: pointer;"> </button>
+  <input name="attr_persuasion" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 140px; top: 722px; width: 20px; height: 9px; font-size: 10px;">
+  <button type="roll" name="roll_persuasion" value="@{whispertoggle}&{template:naruto} {{name=Persuasion}} {{roll=[[ @{roll_type} + @{persuasion} ]]}}" class="sm-prop sm-roll" style="left: 166px; top: 724px; width: 41px; height: 8px; background: transparent; border: none; cursor: pointer;"> </button>
+  <!-- 藺 Saving Throws and Proficiencies Checkboxes -->
+  <input name="attr_savthrowstrprof" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox" style="left: 126px; top: 201px; width: 9px; height: 9px;">
+  <input name="attr_athelticsprof" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox" style="left: 126px; top: 218px; width: 9px; height: 9px;">
+  <input name="attr_taijutsuprof" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox" style="left: 126px; top: 235px; width: 9px; height: 9px;">
+  <input name="attr_savthrowdexprof" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox" style="left: 126px; top: 294px; width: 9px; height: 9px;">
+  <input name="attr_acrobaticsprof" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox" style="left: 126px; top: 311px; width: 9px; height: 9px;">
+  <input name="attr_sleightofhandprof" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox" style="left: 126px; top: 328px; width: 9px; height: 9px;">
+  <input name="attr_stealthprof" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox" style="left: 126px; top: 345px; width: 9px; height: 9px;">
+  <input name="attr_savthrowconprof" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox" style="left: 126px; top: 389px; width: 9px; height: 9px;">
+  <input name="attr_chakracontrolprof" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox" style="left: 126px; top: 406px; width: 9px; height: 9px;">
+  <input name="attr_savthrowintprof" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox" style="left: 126px; top: 477px; width: 9px; height: 9px;">
+  <input name="attr_craftingprof" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox" style="left: 126px; top: 489px; width: 9px; height: 9px;">
+  <input name="attr_historyprof" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox" style="left: 126px; top: 501px; width: 9px; height: 9px;">
+  <input name="attr_investigationprof" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox" style="left: 126px; top: 513px; width: 9px; height: 9px;">
+  <input name="attr_natureprof" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox" style="left: 126px; top: 525px; width: 9px; height: 9px;">
+  <input name="attr_ninjutsuprof" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox" style="left: 126px; top: 537px; width: 9px; height: 9px;">
+  <input name="attr_savthrowwisprof" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox" style="left: 126px; top: 568px; width: 9px; height: 9px;">
+  <input name="attr_animalhandlingprof" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox" style="left: 126px; top: 580px; width: 9px; height: 9px;">
+  <input name="attr_insightprof" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox" style="left: 126px; top: 592px; width: 9px; height: 9px;">
+  <input name="attr_medicineprof" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox" style="left: 126px; top: 604px; width: 9px; height: 9px;">
+  <input name="attr_perceptionprof" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox" style="left: 126px; top: 616px; width: 9px; height: 9px;">
+  <input name="attr_survivalprof" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox" style="left: 126px; top: 628px; width: 9px; height: 9px;">
+  <input name="attr_genjutsuprof" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox" style="left: 126px; top: 640px; width: 9px; height: 9px;">
+  <input name="attr_savthrowchaprof" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox" style="left: 126px; top: 662px; width: 9px; height: 9px;">
+  <input name="attr_deceptionprof" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox" style="left: 126px; top: 677px; width: 9px; height: 9px;">
+  <input name="attr_intimidationprof" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox" style="left: 126px; top: 692px; width: 9px; height: 9px;">
+  <input name="attr_performanceprof" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox" style="left: 126px; top: 707px; width: 9px; height: 9px;">
+  <input name="attr_persuasionprof" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox" style="left: 126px; top: 722px; width: 9px; height: 9px;">
+  <!-- 藺 Saving Throws and Proficiencies Checkboxes -->
+  <input name="attr_savthrowstrprofexp" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox sm-checkbox-framed" style="left: 115px; top: 201px; width: 7px; height: 7px;">
+  <input name="attr_athelticsprofexp" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox sm-checkbox-framed" style="left: 115px; top: 218px; width: 7px; height: 7px;">
+  <input name="attr_taijutsuprofexp" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox sm-checkbox-framed" style="left: 115px; top: 235px; width: 7px; height: 7px;">
+  <input name="attr_savthrowdexprofexp" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox sm-checkbox-framed" style="left: 115px; top: 294px; width: 7px; height: 7px;">
+  <input name="attr_acrobaticsprofexp" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox sm-checkbox-framed" style="left: 115px; top: 311px; width: 7px; height: 7px;">
+  <input name="attr_sleightofhandprofexp" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox sm-checkbox-framed" style="left: 115px; top: 328px; width: 7px; height: 7px;">
+  <input name="attr_stealthprofexp" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox sm-checkbox-framed" style="left: 115px; top: 345px; width: 7px; height: 7px;">
+  <input name="attr_savthrowconprofexp" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox sm-checkbox-framed" style="left: 115px; top: 389px; width: 7px; height: 7px;">
+  <input name="attr_chakracontrolprofexp" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox sm-checkbox-framed" style="left: 115px; top: 406px; width: 7px; height: 7px;">
+  <input name="attr_savthrowintprofexp" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox sm-checkbox-framed" style="left: 115px; top: 477px; width: 7px; height: 7px;">
+  <input name="attr_craftingprofexp" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox sm-checkbox-framed" style="left: 115px; top: 489px; width: 7px; height: 7px;">
+  <input name="attr_historyprofexp" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox sm-checkbox-framed" style="left: 115px; top: 501px; width: 7px; height: 7px;">
+  <input name="attr_investigationprofexp" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox sm-checkbox-framed" style="left: 115px; top: 513px; width: 7px; height: 7px;">
+  <input name="attr_natureprofexp" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox sm-checkbox-framed" style="left: 115px; top: 525px; width: 7px; height: 7px;">
+  <input name="attr_ninjutsuprofexp" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox sm-checkbox-framed" style="left: 115px; top: 537px; width: 7px; height: 7px;">
+  <input name="attr_savthrowwisprofexp" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox sm-checkbox-framed" style="left: 115px; top: 568px; width: 7px; height: 7px;">
+  <input name="attr_animalhandlingprofexp" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox sm-checkbox-framed" style="left: 115px; top: 580px; width: 7px; height: 7px;">
+  <input name="attr_insightprofexp" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox sm-checkbox-framed" style="left: 115px; top: 592px; width: 7px; height: 7px;">
+  <input name="attr_medicineprofexp" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox sm-checkbox-framed" style="left: 115px; top: 604px; width: 7px; height: 7px;">
+  <input name="attr_perceptionprofexp" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox sm-checkbox-framed" style="left: 115px; top: 616px; width: 7px; height: 7px;">
+  <input name="attr_survivalprofexp" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox sm-checkbox-framed" style="left: 115px; top: 628px; width: 7px; height: 7px;">
+  <input name="attr_genjutsuprofexp" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox sm-checkbox-framed" style="left: 115px; top: 640px; width: 7px; height: 7px;">
+  <input name="attr_savthrowchaprofexp" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox sm-checkbox-framed" style="left: 115px; top: 662px; width: 7px; height: 7px;">
+  <input name="attr_deceptionprofexp" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox sm-checkbox-framed" style="left: 115px; top: 677px; width: 7px; height: 7px;">
+  <input name="attr_intimidationprofexp" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox sm-checkbox-framed" style="left: 115px; top: 692px; width: 7px; height: 7px;">
+  <input name="attr_performanceprofexp" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox sm-checkbox-framed" style="left: 115px; top: 707px; width: 7px; height: 7px;">
+  <input name="attr_persuasionprofexp" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox sm-checkbox-framed" style="left: 115px; top: 722px; width: 7px; height: 7px;">
+</div>
+
+<!-- Info Sheet -->
+<div class="sheetmagic" style="width: 792px; height: 1024px; background-image: url('https://i.imgur.com/i0k9g6O.png');">
+
+  <!-- Basic Info -->
+  <input name="attr_charactername" data-sm-id="8" type="text" class="sm-prop sm-slt sm-noborder" placeholder=" " style="left: 92px; top: 99px; width: 143px; height: 34px; font-size: 14px; text-align: center;">
+  <input name="attr_age" data-sm-id="1" type="text" class="sm-prop sm-slt sm-noborder" placeholder=" " style="left: 265px; top: 57px; width: 115px; height: 28px; font-size: 14px; text-align: center;">
+  <input name="attr_height" data-sm-id="2" type="text" class="sm-prop sm-slt sm-noborder" placeholder=" " style="left: 403px; top: 57px; width: 114px; height: 28px; font-size: 14px; text-align: center;">
+  <input name="attr_weight" data-sm-id="3" type="text" class="sm-prop sm-slt sm-noborder" placeholder=" " style="left: 577px; top: 57px; width: 114px; height: 28px; font-size: 14px; text-align: center;">
+  <input name="attr_eyes" data-sm-id="4" type="text" class="sm-prop sm-slt sm-noborder" placeholder=" " style="left: 266px; top: 96px; width: 114px; height: 23px; font-size: 14px; text-align: center;">
+  <input name="attr_skin" data-sm-id="5" type="text" class="sm-prop sm-slt sm-noborder" placeholder=" " style="left: 403px; top: 96px; width: 114px; height: 23px; font-size: 14px; text-align: center;">
+  <input name="attr_hair" data-sm-id="6" type="text" class="sm-prop sm-slt sm-noborder" placeholder=" " style="left: 577px; top: 96px; width: 114px; height: 24px; font-size: 14px; text-align: center;">
+
+  <!-- Appearance & Backstory -->
+  <textarea name="attr_appearance" data-sm-id="9" class="sm-prop sm-mlt sm-noborder" placeholder=" " style="left: 47px; top: 166px; width: 208px; height: 289px;"></textarea>
+  <textarea name="attr_backstory" data-sm-id="10" class="sm-prop sm-mlt sm-noborder" placeholder=" " style="left: 47px; top: 496px; width: 208px; height: 481px;"></textarea>
+
+  <!-- Organizations & Rank -->
+  <textarea name="attr_alliesandorganizations" data-sm-id="11" class="sm-prop sm-mlt sm-noborder" placeholder=" " style="left: 292px; top: 490px; width: 450px; height: 260px;"></textarea>
+  <textarea name="attr_villagerank" data-sm-id="12" class="sm-prop sm-mlt sm-noborder" placeholder=" " style="left: 288px; top: 177px; width: 228px; height: 275px;"></textarea>
+
+  <!-- Affinities -->
+  <input name="attr_fireaff" data-sm-id="13" type="checkbox" value="1" class="sm-prop sm-checkbox sm-checkbox-framed" style="left: 631px; top: 261px; width: 10px; height: 10px;">
+  <input name="attr_wateraff" data-sm-id="14" type="checkbox" value="1" class="sm-prop sm-checkbox sm-checkbox-framed" style="left: 612px; top: 274px; width: 10px; height: 10px;">
+  <input name="attr_earthaff" data-sm-id="15" type="checkbox" value="1" class="sm-prop sm-checkbox sm-checkbox-framed" style="left: 622px; top: 298px; width: 10px; height: 10px;">
+  <input name="attr_lightningaff" data-sm-id="16" type="checkbox" value="1" class="sm-prop sm-checkbox sm-checkbox-framed" style="left: 643px; top: 298px; width: 10px; height: 10px;">
+  <input name="attr_windaff" data-sm-id="17" type="checkbox" value="1" class="sm-prop sm-checkbox sm-checkbox-framed" style="left: 650px; top: 274px; width: 10px; height: 10px;">
+
+  <!-- Custom Properties -->
+  <input name="attr_prop18" data-sm-id="18" type="text" class="sm-prop sm-slt sm-noborder" placeholder=" " style="left: 299px; top: 788px; width: 48px; height: 23px; font-size: 17px;">
+  <input name="attr_prop19" data-sm-id="19" type="text" class="sm-prop sm-slt sm-noborder" placeholder=" " style="left: 364px; top: 788px; width: 133px; height: 23px; font-size: 17px;">
+  <textarea name="attr_prop20" data-sm-id="20" type="text" class="sm-prop sm-mlt sm-noborder" placeholder=" " style="left: 292px; top: 820px; width: 450px; height: 160px; font-size: 12px;"></textarea>
+  
+</div>
+
+<!-- Jutsu Sheet -->
+<div class="sheetmagic" style="width: 792px; height: 1024px; background-image: url('https://i.imgur.com/1lTcoo8.png');">
+
+  <!-- Save DCs & Attack Bonuses -->
+  <input name="attr_ninjitsuatkbonus" data-sm-id="1" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 330px; top: 68px; width: 67px; height: 24px; font-size: 17px;">
+  <input name="attr_ninjutsusavedc" data-sm-id="2" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 330px; top: 101px; width: 67px; height: 24px; font-size: 17px;">
+
+  <input name="attr_taijutsuatkbonus" data-sm-id="3" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 482px; top: 68px; width: 67px; height: 24px; font-size: 17px;">
+  <input name="attr_taijutsusavedc" data-sm-id="4" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 482px; top: 101px; width: 67px; height: 24px; font-size: 17px;">
+
+  <input name="attr_genjutsuatkbonus" data-sm-id="5" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 642px; top: 68px; width: 67px; height: 24x; font-size: 17px;">
+  <input name="attr_genjutsusavedc" data-sm-id="6" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 642px; top: 101px; width: 67px; height: 24px; font-size: 17px;">
+
+  <!-- Jutsu Text Areas by Rank -->
+  <textarea name="attr_ejutsu" data-sm-id="7" class="sm-prop sm-mlt sm-noborder" placeholder=" " style="left: 52px; top: 226px; width: 211px; height: 306px; font-size: 10px;"></textarea>
+  <textarea name="attr_cjutsu" data-sm-id="8" class="sm-prop sm-mlt sm-noborder" placeholder=" " style="left: 296px; top: 226px; width: 211px; height: 305px; font-size: 10px;"></textarea>
+  <textarea name="attr_ajutsu" data-sm-id="9" class="sm-prop sm-mlt sm-noborder" placeholder=" " style="left: 538px; top: 226px; width: 211px; height: 303px; font-size: 10px;"></textarea>
+
+  <textarea name="attr_djutsu" data-sm-id="10" class="sm-prop sm-mlt sm-noborder" placeholder=" " style="left: 52px; top: 589px; width: 212px; height: 380px; font-size: 10px;"></textarea>
+  <textarea name="attr_bjutsu" data-sm-id="11" class="sm-prop sm-mlt sm-noborder" placeholder=" " style="left: 296px; top: 589px; width: 212px; height: 380px; font-size: 10px;"></textarea>
+  <textarea name="attr_sjutsu" data-sm-id="12" class="sm-prop sm-mlt sm-noborder" placeholder=" " style="left: 535px; top: 589px; width: 209px; height: 380px; font-size: 10px;"></textarea>
+  
+  <input name="attr_cjutsutotal" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 310px; top: 188px; width: 51px; height: 28px; font-size: 17px;">
+  <input name="attr_ajutsutotal" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 552px; top: 188px; width: 51px; height: 28px; font-size: 17px;">
+  <input name="attr_djutsutotal" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 66px; top: 551px; width: 51px; height: 28px; font-size: 17px;">
+  <input name="attr_bjutsutotal" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 309px; top: 550px; width: 51px; height: 28px; font-size: 17px;">
+  <input name="attr_sjutsutotal" type="number" class="sm-prop sm-num sm-noborder" placeholder=" " style="left: 551px; top: 554px; width: 51px; height: 28px; font-size: 17px;">
+
+<!-- E-Rank Jutsu Page Toggle -->
+<div style="position: absolute; left: 52px; top: 226px; width: 240px;" class="erank-wrapper">
+  <!-- Toggle to show/hide Add/Modify buttons -->
+  <input type="checkbox" name="attr_show_erank_controls" class="erank-toggle" style="position: absolute; left: -20px; top: 4px;" />
+  
+  <!-- Page Selectors -->
+  <input type="radio" name="attr_erank_page" class="erank-page-toggle" value="1" checked>
+  <input type="radio" name="attr_erank_page" class="erank-page-toggle" value="2">
+
+  <!-- Page 1 -->
+  <div class="erank-page erank-page-1">
+    <fieldset class="repeating_erankjutsu1">
+      <details class="jutsu-box">
+        <summary>
+          <input type="text" name="attr_jutsu_name" placeholder="Jutsu Name" class="jutsu-title" />
+        </summary>
+        <div class="jutsu-fields">
+          <label><span>Classification:</span><input type="text" name="attr_jutsu_classification" /></label>
+          <label><span>Rank:</span><input type="text" name="attr_jutsu_rank" /></label>
+          <label><span>Casting Time:</span><input type="text" name="attr_jutsu_casting_time" /></label>
+          <label><span>Range:</span><input type="text" name="attr_jutsu_range" /></label>
+          <label><span>Duration:</span><input type="text" name="attr_jutsu_duration" /></label>
+          <label><span>Components:</span><input type="text" name="attr_jutsu_components" /></label>
+          <label><span>Cost:</span><input type="text" name="attr_jutsu_cost" /></label>
+          <label><span>Keywords:</span><input type="text" name="attr_jutsu_keywords" /></label>
+          <label><span>Source:</span><input type="text" name="attr_source" /></label>
+          <label class="jutsu-desc-label"><span>Description:</span><textarea name="attr_jutsu_description"></textarea></label>
+        </div>
+      </details>
+    </fieldset>
+  </div>
+
+  <!-- Page 2 -->
+  <div class="erank-page erank-page-2">
+    <fieldset class="repeating_erankjutsu2">
+      <details class="jutsu-box">
+        <summary>
+          <input type="text" name="attr_jutsu_name" placeholder="Jutsu Name" class="jutsu-title" />
+        </summary>
+        <div class="jutsu-fields">
+          <label><span>Classification:</span><input type="text" name="attr_jutsu_classification" /></label>
+          <label><span>Rank:</span><input type="text" name="attr_jutsu_rank" /></label>
+          <label><span>Casting Time:</span><input type="text" name="attr_jutsu_casting_time" /></label>
+          <label><span>Range:</span><input type="text" name="attr_jutsu_range" /></label>
+          <label><span>Duration:</span><input type="text" name="attr_jutsu_duration" /></label>
+          <label><span>Components:</span><input type="text" name="attr_jutsu_components" /></label>
+          <label><span>Cost:</span><input type="text" name="attr_jutsu_cost" /></label>
+          <label><span>Keywords:</span><input type="text" name="attr_jutsu_keywords" /></label>
+          <label><span>Source:</span><input type="text" name="attr_source" /></label>
+          <label class="jutsu-desc-label"><span>Description:</span><textarea name="attr_jutsu_description"></textarea></label>
+        </div>
+      </details>
+    </fieldset>
+  </div>
+</div>
+
+<!-- D-Rank Jutsu Page Toggle -->
+<div style="position: absolute; top: 589px; left: 52px; width: 200px;" class="drank-wrapper">
+  <!-- Toggle to show/hide Add/Modify buttons -->
+  <input type="checkbox" name="attr_show_drank_controls" class="drank-toggle" style="position: absolute; left: -20px; top: 4px;" />
+  
+  <!-- Page Selectors -->
+  <input type="radio" name="attr_drank_page" class="drank-page-toggle" value="1" checked>
+  <input type="radio" name="attr_drank_page" class="drank-page-toggle" value="2">
+
+  <!-- Page 1 -->
+  <div class="drank-page drank-page-1">
+    <fieldset class="repeating_drankjutsu1">
+      <details class="jutsu-box">
+        <summary>
+          <input type="text" name="attr_jutsu_name" placeholder="Jutsu Name" class="jutsu-title" />
+        </summary>
+        <div class="jutsu-fields">
+          <label><span>Classification:</span><input type="text" name="attr_jutsu_classification" /></label>
+          <label><span>Rank:</span><input type="text" name="attr_jutsu_rank" /></label>
+          <label><span>Casting Time:</span><input type="text" name="attr_jutsu_casting_time" /></label>
+          <label><span>Range:</span><input type="text" name="attr_jutsu_range" /></label>
+          <label><span>Duration:</span><input type="text" name="attr_jutsu_duration" /></label>
+          <label><span>Components:</span><input type="text" name="attr_jutsu_components" /></label>
+          <label><span>Cost:</span><input type="text" name="attr_jutsu_cost" /></label>
+          <label><span>Keywords:</span><input type="text" name="attr_jutsu_keywords" /></label>
+          <label><span>Source:</span><input type="text" name="attr_source" /></label>
+          <label class="jutsu-desc-label"><span>Description:</span><textarea name="attr_jutsu_description"></textarea></label>
+        </div>
+      </details>
+    </fieldset>
+  </div>
+
+  <!-- Page 2 -->
+  <div class="drank-page drank-page-2">
+    <fieldset class="repeating_drankjutsu2">
+      <details class="jutsu-box">
+        <summary>
+          <input type="text" name="attr_jutsu_name" placeholder="Jutsu Name" class="jutsu-title" />
+        </summary>
+        <div class="jutsu-fields">
+          <label><span>Classification:</span><input type="text" name="attr_jutsu_classification" /></label>
+          <label><span>Rank:</span><input type="text" name="attr_jutsu_rank" /></label>
+          <label><span>Casting Time:</span><input type="text" name="attr_jutsu_casting_time" /></label>
+          <label><span>Range:</span><input type="text" name="attr_jutsu_range" /></label>
+          <label><span>Duration:</span><input type="text" name="attr_jutsu_duration" /></label>
+          <label><span>Components:</span><input type="text" name="attr_jutsu_components" /></label>
+          <label><span>Cost:</span><input type="text" name="attr_jutsu_cost" /></label>
+          <label><span>Keywords:</span><input type="text" name="attr_jutsu_keywords" /></label>
+          <label><span>Source:</span><input type="text" name="attr_source" /></label>
+          <label class="jutsu-desc-label"><span>Description:</span><textarea name="attr_jutsu_description"></textarea></label>
+        </div>
+      </details>
+    </fieldset>
+  </div>
+</div>
+
+<!-- C-Rank Jutsu Page Toggle -->
+<div style="position: absolute; top: 226px; left: 296px; width: 200px;" class="crank-wrapper">
+  <!-- Toggle to show/hide Add/Modify buttons -->
+  <input type="checkbox" name="attr_show_crank_controls" class="crank-toggle" style="position: absolute; left: -20px; top: 4px;" />
+  
+  <!-- Page Selectors -->
+  <input type="radio" name="attr_crank_page" class="crank-page-toggle" value="1" checked>
+  <input type="radio" name="attr_crank_page" class="crank-page-toggle" value="2">
+
+  <!-- Page 1 -->
+  <div class="crank-page crank-page-1">
+    <fieldset class="repeating_crankjutsu1">
+      <details class="jutsu-box">
+        <summary>
+          <input type="text" name="attr_jutsu_name" placeholder="Jutsu Name" class="jutsu-title" />
+        </summary>
+        <div class="jutsu-fields">
+          <label><span>Classification:</span><input type="text" name="attr_jutsu_classification" /></label>
+          <label><span>Rank:</span><input type="text" name="attr_jutsu_rank" /></label>
+          <label><span>Casting Time:</span><input type="text" name="attr_jutsu_casting_time" /></label>
+          <label><span>Range:</span><input type="text" name="attr_jutsu_range" /></label>
+          <label><span>Duration:</span><input type="text" name="attr_jutsu_duration" /></label>
+          <label><span>Components:</span><input type="text" name="attr_jutsu_components" /></label>
+          <label><span>Cost:</span><input type="text" name="attr_jutsu_cost" /></label>
+          <label><span>Keywords:</span><input type="text" name="attr_jutsu_keywords" /></label>
+          <label><span>Source:</span><input type="text" name="attr_source" /></label>
+          <label class="jutsu-desc-label"><span>Description:</span><textarea name="attr_jutsu_description"></textarea></label>
+        </div>
+      </details>
+    </fieldset>
+  </div>
+
+  <!-- Page 2 -->
+  <div class="crank-page crank-page-2">
+    <fieldset class="repeating_crankjutsu2">
+      <details class="jutsu-box">
+        <summary>
+          <input type="text" name="attr_jutsu_name" placeholder="Jutsu Name" class="jutsu-title" />
+        </summary>
+        <div class="jutsu-fields">
+          <label><span>Classification:</span><input type="text" name="attr_jutsu_classification" /></label>
+          <label><span>Rank:</span><input type="text" name="attr_jutsu_rank" /></label>
+          <label><span>Casting Time:</span><input type="text" name="attr_jutsu_casting_time" /></label>
+          <label><span>Range:</span><input type="text" name="attr_jutsu_range" /></label>
+          <label><span>Duration:</span><input type="text" name="attr_jutsu_duration" /></label>
+          <label><span>Components:</span><input type="text" name="attr_jutsu_components" /></label>
+          <label><span>Cost:</span><input type="text" name="attr_jutsu_cost" /></label>
+          <label><span>Keywords:</span><input type="text" name="attr_jutsu_keywords" /></label>
+          <label><span>Source:</span><input type="text" name="attr_source" /></label>
+          <label class="jutsu-desc-label"><span>Description:</span><textarea name="attr_jutsu_description"></textarea></label>
+        </div>
+      </details>
+    </fieldset>
+  </div>
+</div>
+
+<!-- B-Rank Jutsu Page Toggle -->
+<div style="position: absolute; left: 296px; top: 589px; width: 200px;" class="brank-wrapper">
+  <!-- Toggle to show/hide Add/Modify buttons -->
+  <input type="checkbox" name="attr_show_brank_controls" class="brank-toggle" style="position: absolute; left: -20px; top: 4px;" />
+  
+  <!-- Page Selectors -->
+  <input type="radio" name="attr_brank_page" class="brank-page-toggle" value="1" checked>
+  <input type="radio" name="attr_brank_page" class="brank-page-toggle" value="2">
+
+  <!-- Page 1 -->
+  <div class="brank-page brank-page-1">
+    <fieldset class="repeating_brankjutsu1">
+      <details class="jutsu-box">
+        <summary>
+          <input type="text" name="attr_jutsu_name" placeholder="Jutsu Name" class="jutsu-title" />
+        </summary>
+        <div class="jutsu-fields">
+          <label><span>Classification:</span><input type="text" name="attr_jutsu_classification" /></label>
+          <label><span>Rank:</span><input type="text" name="attr_jutsu_rank" /></label>
+          <label><span>Casting Time:</span><input type="text" name="attr_jutsu_casting_time" /></label>
+          <label><span>Range:</span><input type="text" name="attr_jutsu_range" /></label>
+          <label><span>Duration:</span><input type="text" name="attr_jutsu_duration" /></label>
+          <label><span>Components:</span><input type="text" name="attr_jutsu_components" /></label>
+          <label><span>Cost:</span><input type="text" name="attr_jutsu_cost" /></label>
+          <label><span>Keywords:</span><input type="text" name="attr_jutsu_keywords" /></label>
+          <label><span>Source:</span><input type="text" name="attr_source" /></label>
+          <label class="jutsu-desc-label"><span>Description:</span><textarea name="attr_jutsu_description"></textarea></label>
+        </div>
+      </details>
+    </fieldset>
+  </div>
+
+  <!-- Page 2 -->
+  <div class="brank-page brank-page-2">
+    <fieldset class="repeating_brankjutsu2">
+      <details class="jutsu-box">
+        <summary>
+          <input type="text" name="attr_jutsu_name" placeholder="Jutsu Name" class="jutsu-title" />
+        </summary>
+        <div class="jutsu-fields">
+          <label><span>Classification:</span><input type="text" name="attr_jutsu_classification" /></label>
+          <label><span>Rank:</span><input type="text" name="attr_jutsu_rank" /></label>
+          <label><span>Casting Time:</span><input type="text" name="attr_jutsu_casting_time" /></label>
+          <label><span>Range:</span><input type="text" name="attr_jutsu_range" /></label>
+          <label><span>Duration:</span><input type="text" name="attr_jutsu_duration" /></label>
+          <label><span>Components:</span><input type="text" name="attr_jutsu_components" /></label>
+          <label><span>Cost:</span><input type="text" name="attr_jutsu_cost" /></label>
+          <label><span>Keywords:</span><input type="text" name="attr_jutsu_keywords" /></label>
+          <label><span>Source:</span><input type="text" name="attr_source" /></label>
+          <label class="jutsu-desc-label"><span>Description:</span><textarea name="attr_jutsu_description"></textarea></label>
+        </div>
+      </details>
+    </fieldset>
+  </div>
+</div>
+
+<!-- A-Rank Jutsu Page Toggle -->
+<div style="position: absolute; left: 538px; top: 226px; width: 200px;" class="arank-wrapper">
+  <!-- Toggle to show/hide Add/Modify buttons -->
+  <input type="checkbox" name="attr_show_arank_controls" class="arank-toggle" style="position: absolute; left: -20px; top: 4px;" />
+  
+  <!-- Page Selectors -->
+  <input type="radio" name="attr_arank_page" class="arank-page-toggle" value="1" checked>
+  <input type="radio" name="attr_arank_page" class="arank-page-toggle" value="2">
+
+  <!-- Page 1 -->
+  <div class="arank-page arank-page-1">
+    <fieldset class="repeating_arankjutsu1">
+      <details class="jutsu-box">
+        <summary>
+          <input type="text" name="attr_jutsu_name" placeholder="Jutsu Name" class="jutsu-title" />
+        </summary>
+        <div class="jutsu-fields">
+          <label><span>Classification:</span><input type="text" name="attr_jutsu_classification" /></label>
+          <label><span>Rank:</span><input type="text" name="attr_jutsu_rank" /></label>
+          <label><span>Casting Time:</span><input type="text" name="attr_jutsu_casting_time" /></label>
+          <label><span>Range:</span><input type="text" name="attr_jutsu_range" /></label>
+          <label><span>Duration:</span><input type="text" name="attr_jutsu_duration" /></label>
+          <label><span>Components:</span><input type="text" name="attr_jutsu_components" /></label>
+          <label><span>Cost:</span><input type="text" name="attr_jutsu_cost" /></label>
+          <label><span>Keywords:</span><input type="text" name="attr_jutsu_keywords" /></label>
+          <label><span>Source:</span><input type="text" name="attr_source" /></label>
+          <label class="jutsu-desc-label"><span>Description:</span><textarea name="attr_jutsu_description"></textarea></label>
+        </div>
+      </details>
+    </fieldset>
+  </div>
+
+  <!-- Page 2 -->
+  <div class="arank-page arank-page-2">
+    <fieldset class="repeating_arankjutsu2">
+      <details class="jutsu-box">
+        <summary>
+          <input type="text" name="attr_jutsu_name" placeholder="Jutsu Name" class="jutsu-title" />
+        </summary>
+        <div class="jutsu-fields">
+          <label><span>Classification:</span><input type="text" name="attr_jutsu_classification" /></label>
+          <label><span>Rank:</span><input type="text" name="attr_jutsu_rank" /></label>
+          <label><span>Casting Time:</span><input type="text" name="attr_jutsu_casting_time" /></label>
+          <label><span>Range:</span><input type="text" name="attr_jutsu_range" /></label>
+          <label><span>Duration:</span><input type="text" name="attr_jutsu_duration" /></label>
+          <label><span>Components:</span><input type="text" name="attr_jutsu_components" /></label>
+          <label><span>Cost:</span><input type="text" name="attr_jutsu_cost" /></label>
+          <label><span>Keywords:</span><input type="text" name="attr_jutsu_keywords" /></label>
+          <label><span>Source:</span><input type="text" name="attr_source" /></label>
+          <label class="jutsu-desc-label"><span>Description:</span><textarea name="attr_jutsu_description"></textarea></label>
+        </div>
+      </details>
+    </fieldset>
+  </div>
+</div>
+
+<!-- S-Rank Jutsu Page Toggle -->
+<div style="position: absolute; left: 535px; top: 589px; width: 200px;" class="srank-wrapper">
+  <!-- Toggle to show/hide Add/Modify buttons -->
+  <input type="checkbox" name="attr_show_srank_controls" class="srank-toggle" style="position: absolute; left: -20px; top: 4px;" />
+  
+  <!-- Page Selectors -->
+  <input type="radio" name="attr_srank_page" class="srank-page-toggle" value="1" checked>
+  <input type="radio" name="attr_srank_page" class="srank-page-toggle" value="2">
+
+  <!-- Page 1 -->
+  <div class="srank-page srank-page-1">
+    <fieldset class="repeating_srankjutsu1">
+      <details class="jutsu-box">
+        <summary>
+          <input type="text" name="attr_jutsu_name" placeholder="Jutsu Name" class="jutsu-title" />
+        </summary>
+        <div class="jutsu-fields">
+          <label><span>Classification:</span><input type="text" name="attr_jutsu_classification" /></label>
+          <label><span>Rank:</span><input type="text" name="attr_jutsu_rank" /></label>
+          <label><span>Casting Time:</span><input type="text" name="attr_jutsu_casting_time" /></label>
+          <label><span>Range:</span><input type="text" name="attr_jutsu_range" /></label>
+          <label><span>Duration:</span><input type="text" name="attr_jutsu_duration" /></label>
+          <label><span>Components:</span><input type="text" name="attr_jutsu_components" /></label>
+          <label><span>Cost:</span><input type="text" name="attr_jutsu_cost" /></label>
+          <label><span>Keywords:</span><input type="text" name="attr_jutsu_keywords" /></label>
+          <label><span>Source:</span><input type="text" name="attr_source" /></label>
+          <label class="jutsu-desc-label"><span>Description:</span><textarea name="attr_jutsu_description"></textarea></label>
+        </div>
+      </details>
+    </fieldset>
+  </div>
+
+  <!-- Page 2 -->
+  <div class="srank-page srank-page-2">
+    <fieldset class="repeating_srankjutsu2">
+      <details class="jutsu-box">
+        <summary>
+          <input type="text" name="attr_jutsu_name" placeholder="Jutsu Name" class="jutsu-title" />
+        </summary>
+        <div class="jutsu-fields">
+          <label><span>Classification:</span><input type="text" name="attr_jutsu_classification" /></label>
+          <label><span>Rank:</span><input type="text" name="attr_jutsu_rank" /></label>
+          <label><span>Casting Time:</span><input type="text" name="attr_jutsu_casting_time" /></label>
+          <label><span>Range:</span><input type="text" name="attr_jutsu_range" /></label>
+          <label><span>Duration:</span><input type="text" name="attr_jutsu_duration" /></label>
+          <label><span>Components:</span><input type="text" name="attr_jutsu_components" /></label>
+          <label><span>Cost:</span><input type="text" name="attr_jutsu_cost" /></label>
+          <label><span>Keywords:</span><input type="text" name="attr_jutsu_keywords" /></label>
+          <label><span>Source:</span><input type="text" name="attr_source" /></label>
+          <label class="jutsu-desc-label"><span>Description:</span><textarea name="attr_jutsu_description"></textarea></label>
+        </div>
+      </details>
+    </fieldset>
+  </div>
+</div>

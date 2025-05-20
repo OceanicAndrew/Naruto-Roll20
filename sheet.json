@@ -1,0 +1,10 @@
+{
+  "html": "My Naruto HTML.html",
+  "css": "My Naruto CSS.css",
+  "authors": "Your Name",
+  "roll20userid": "123456",
+  "preview": "https://i.imgur.com/LJ2DA7z.png",
+  "instructions": "Naruto 5E custom character sheet with Custom Roll Parsing enabled.",
+  "legacy": false,
+  "customRollParsing": true
+}
